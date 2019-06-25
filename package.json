@@ -8,10 +8,20 @@
   },
   "dependencies": {
     "expo": "^33.0.0",
+    "firebase": "^6.2.3",
+    "native-base": "^2.12.1",
     "node-modules": "^1.0.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-elements": "^1.1.0",
+    "react-native-vector-icons": "^6.5.0",
+    "react-navigation": "^3.11.0",
+    "react-redux": "^7.1.0",
+    "react-redux-firebase": "^2.2.6",
+    "redux": "^4.0.1",
+    "redux-firestore": "^0.8.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1"
