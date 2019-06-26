@@ -5,7 +5,7 @@ import { StyleSheet,  View, Image,
 import {  Container, Content, Header,Left,Title,Button,Footer,
      ListItem,Body, InputGroup, Input, Text, Picker} from 'native-base'
 import { Constants,LinearGradient  } from 'expo';
-import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import pice from '../../assets/background.jpg'
 
 
@@ -34,13 +34,18 @@ export default class Login extends React.Component {
     }
   }
   
+  Login=()=>{
+    this.props.navigation.navigate('Dashboard')
+  }
+
 render() {
   return (
     <Container style={{marginTop: Constants.statusBarHeight}}>
       <ImageBackground source={pice} style={styles.bgImageContainer}>
         <View style={styles.logoContainer}>
           {/* <Image src={} style={styles.logo}/> */}
-          <Text style={styles.logoText}>Login Here</Text>
+          <Icon name={'envira'} size={80} color={'rgba(0, 0, 0, 0.6)'}/>
+          {/* <Text style={styles.logoText}>Login Here</Text> */}
         </View>
 
         <View style={styles.InputContainer}>
@@ -66,12 +71,12 @@ render() {
         <TouchableOpacity style={styles.btnEye}
           onPress={this.showPass.bind(this)}
         >
-          <Icon name={this.state.press ==false ?'eyeo':'eye'} size={26} color={'rgba(255,255,255,0.7)'}/>
+          <Icon name={this.state.press ==false ?'eye-slash':'eye'} size={26} color={'rgba(255,255,255,0.7)'}/>
         </TouchableOpacity>
         </View>
 
         <TouchableOpacity style={styles.btnLogin}>
-          <Text style={styles.text}> Login</Text>
+          <Text style={styles.text} onPress={this.Login}> Login</Text>
         </TouchableOpacity>
 
       </ImageBackground>
