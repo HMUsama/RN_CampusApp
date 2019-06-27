@@ -7,6 +7,8 @@ import {  Container, Content, Header,Left,Title,Button,Footer,
 import { Constants,LinearGradient  } from 'expo';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import pice from '../../assets/background.jpg'
+import {connect} from 'react-redux'
+import {signInUR} from '../store/actions/authActionUR'
 
 
 const { width:WIDTH } = Dimensions.get('window')
@@ -15,6 +17,10 @@ export default class Login extends React.Component {
   constructor(){
     super()
     this.state = {
+      email:'',
+      password:'',
+      status:false,
+      auth:false,
       showPass : true,
       press: false,
     }
@@ -33,7 +39,23 @@ export default class Login extends React.Component {
       })
     }
   }
+  hundleChange=(e)=>{
+    this.setState({
+        [e.target.id]:e.target.value
+    })
+}
+hundleSubmit=(e)=>{
+  if(!this.state.email){
+      alert(" Insert Email ");
+  }else if(!this.state.password) {
+    alert(" Insert Password ");
+  }
   
+  e.preventDefault();
+  console.log("User Login",e)
+  this.props.signInUR(this.state);
+}
+
   Login=()=>{
     this.props.navigation.navigate('Dashboard')
   }
@@ -56,6 +78,7 @@ render() {
           placeholder={'User Name'}
           placeholderTextColor={'#ffff'}
           underlineColorAndroid='transparent'
+          id="email" onChange={this.hundleChange}
           />
         </View>
         <View style={styles.InputContainer}>
@@ -67,6 +90,7 @@ render() {
           secureTextEntry={this.state.showPass}
           placeholderTextColor={'#ffff'}
           underlineColorAndroid='transparent'
+          id="password" onChange={this.hundleChange} 
           />
         <TouchableOpacity style={styles.btnEye}
           onPress={this.showPass.bind(this)}
