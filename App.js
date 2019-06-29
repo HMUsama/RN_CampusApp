@@ -2,6 +2,8 @@ import React from 'react';
 import Navigator from './src/navigations/Navigation';
 import { Root } from "native-base";
 import { Font ,AppLoading } from 'expo';
+import {Provider} from 'react-redux'
+import store from './src/store/index'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,9 +30,11 @@ export default class App extends React.Component {
       );
     }
     return (
+      <Provider store={store}>
       <Root>
        <Navigator/>
        </Root>
+       </Provider>
     )
   }
 }

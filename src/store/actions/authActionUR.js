@@ -1,4 +1,5 @@
 export const userSignUp = (newStudent) =>{
+    console.log('888888888888888',newStudent)
     return (dispatch,getState,{getFirebase,getFirestore})=>{
         const firebase=getFirebase();
         const firestore=getFirestore();
@@ -8,8 +9,7 @@ export const userSignUp = (newStudent) =>{
         ).then((res)=>{
         return firestore.collection("Users").doc(res.user.uid).set({
                 email    : newStudent.email,
-                firstName: newStudent.firstName,
-                lastName:  newStudent.lastName,     
+                fullName: newStudent.fullName,     
             })
         }).then(() => {
             dispatch({ type:'SIGNUP_SUCCESS',payload:'User' })
@@ -21,6 +21,7 @@ export const userSignUp = (newStudent) =>{
 
 export const signInUR = (credentails) =>{
     return (dispatch,getState,{getFirebase})=>{
+        console.log("Credentail STD",credentails);
         console.log("Credentail STD",credentails);
         const firebase=getFirebase();
         firebase.auth().signInWithEmailAndPassword(

@@ -13,7 +13,7 @@ import {signInUR} from '../store/actions/authActionUR'
 
 const { width:WIDTH } = Dimensions.get('window')
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -26,38 +26,44 @@ export default class Login extends React.Component {
     }
   }
 
-  showPass=()=>{
-    if(this.state.press==false){
-      this.setState({
-        showPass:false,
-        press:true
-      })
-    }else{
-      this.setState({
-        showPass:true,
-        press:false
-      })
-    }
-  }
-  hundleChange=(e)=>{
+showPassword=()=>{
+  if(this.state.press==false){
     this.setState({
-        [e.target.id]:e.target.value
+      showPass:false,
+      press:true
     })
-}
-hundleSubmit=(e)=>{
-  if(!this.state.email){
-      alert(" Insert Email ");
-  }else if(!this.state.password) {
-    alert(" Insert Password ");
+  }else{
+    this.setState({
+      showPass:true,
+      press:false
+    })
   }
-  
-  e.preventDefault();
-  console.log("User Login",e)
-  this.props.signInUR(this.state);
 }
 
-  Login=()=>{
-    this.props.navigation.navigate('Dashboard')
+hundleChange=(e)=>{
+  console.log("====================================",e.target.value)
+  this.setState({
+      [e.target.id]:e.target.value
+  })
+}
+  LoginSub=()=>{
+    if(!this.state.email){
+      // alert(" Insert Email ");
+      console.log(" Insert Email ");
+  }else if(!this.state.password) {
+    // alert(" Insert Password ");
+    console.log(" Insert Password ");
+  }
+  else if(this.state.email || this.state.password){
+    this.props.signInUR(this.state);
+  }
+  // console.log("User Login",e)
+  // this.props.signInUR(this.state);
+    // this.props.navigation.navigate('Register')
+  }
+
+  btnRegister=()=>{
+    this.props.navigation.navigate('Register')
   }
 
 render() {
@@ -69,19 +75,20 @@ render() {
           <Icon name={'envira'} size={80} color={'rgba(0, 0, 0, 0.6)'}/>
           {/* <Text style={styles.logoText}>Login Here</Text> */}
         </View>
-
-        <View style={styles.InputContainer}>
-          <Icon name={'user'} size={28} color={'rgba(255,255,255,0.7)'}
-            style={styles.inputIcon}/>
-          <TextInput
-          style={styles.input}
-          placeholder={'User Name'}
-          placeholderTextColor={'#ffff'}
-          underlineColorAndroid='transparent'
-          id="email" onChange={this.hundleChange}
-          />
-        </View>
-        <View style={styles.InputContainer}>
+        <KeyboardAvoidingView enabled>
+          <View style={styles.InputContainer}>
+            <Icon name={'user'} size={28} color={'rgba(255,255,255,0.7)'}
+              style={styles.inputIcon}/>
+            <TextInput
+            style={styles.input}
+            placeholder={'Email'}
+            placeholderTextColor={'#ffff'}
+            underlineColorAndroid='transparent'
+            // id="email" onChange={this.hundleChange}
+            onChangeText={(email) => this.setState({ email })}
+            />
+          </View>
+          <View style={styles.InputContainer}>
           <Icon name={'lock'} size={28} color={'rgba(255,255,255,0.7)'}
           style={styles.inputIcon}/>
           <TextInput
@@ -90,17 +97,21 @@ render() {
           secureTextEntry={this.state.showPass}
           placeholderTextColor={'#ffff'}
           underlineColorAndroid='transparent'
-          id="password" onChange={this.hundleChange} 
+          // id="password" onChange={this.hundleChange} 
+          onChangeText={(password) => this.setState({ password })}
           />
         <TouchableOpacity style={styles.btnEye}
-          onPress={this.showPass.bind(this)}
+          onPress={this.showPassword.bind(this)}
         >
           <Icon name={this.state.press ==false ?'eye-slash':'eye'} size={26} color={'rgba(255,255,255,0.7)'}/>
         </TouchableOpacity>
         </View>
-
+        </KeyboardAvoidingView>
         <TouchableOpacity style={styles.btnLogin}>
-          <Text style={styles.text} onPress={this.Login}> Login</Text>
+          <Text style={styles.text} onPress={this.LoginSub}> Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btnRegister}>
+          <Text style={styles.text} onPress={this.btnRegister}> Register</Text>
         </TouchableOpacity>
 
       </ImageBackground>
@@ -108,6 +119,19 @@ render() {
     );
   }
 }
+const mapStateToProps = (state) => {
+  console.log("User Login______________________>>>>>",state.status)
+  return{
+  }
+}
+const mapDispatchToProps=(dispatch)=>{
+  return{
+      signInUR: (creds) =>dispatch(signInUR(creds)),
+      adminLognin: (creds) =>dispatch(adminLognin(creds))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
 
 const styles = StyleSheet.create({
     bgImageContainer:{
@@ -167,6 +191,14 @@ const styles = StyleSheet.create({
       color:'#fff',
       fontSize:16,
       textAlign:'center',
+    },
+    btnRegister:{
+      width:WIDTH -55,
+      height:45,
+      borderRadius:25,
+      backgroundColor:'#193B4D',
+      justifyContent:'center',
+      marginTop:20
     },
 })
 
