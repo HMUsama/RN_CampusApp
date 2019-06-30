@@ -7,9 +7,9 @@
 [logo]: https://github.com/HMUsama/RN_CampusApp/blob/master/assets/Login.PNG "Logo Title Text 2"
 
 ### SignUp Page  
-![alt text][logo]
+![alt text][logo2]
 
-[logo]: https://github.com/HMUsama/RN_CampusApp/blob/master/assets/signup.PNG " SignUp"
+[logo2]: https://github.com/HMUsama/RN_CampusApp/blob/master/assets/signup.PNG " SignUp"
 
 ### Dashoboard Drawer  
 ![alt text][logo1]
