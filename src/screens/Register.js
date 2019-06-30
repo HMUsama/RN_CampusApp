@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,  View, Image,
+import { StyleSheet,  View, Image,ScrollView,Platform,SafeAreaView,
          Dimensions,KeyboardAvoidingView,
          ImageBackground,TextInput ,TouchableOpacity} from 'react-native';
 import {  Container, Content, Header,Left,Title,Button,Footer,
@@ -7,6 +7,7 @@ import {  Container, Content, Header,Left,Title,Button,Footer,
 import { Constants,LinearGradient  } from 'expo';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import pice from '../../assets/background.jpg'
+import pice1 from '../../assets/campus_app1.png'
 import {connect} from 'react-redux'
 import {userSignUp} from '../store/actions/authActionUR'
 
@@ -64,14 +65,21 @@ Register=()=>{
 
 render() {
   return (
+   
     <Container style={{marginTop: Constants.statusBarHeight}}>
+       {/* <KeyboardAvoidingView enabled   behavior={Platform.OS === "ios" ? "padding" : null}
+       style={{ flex: 1, }}> */}
     <ImageBackground source={pice} style={styles.bgImageContainer}>
+     
       <View style={styles.logoContainer}>
-        {/* <Image src={} style={styles.logo}/> */}
-        <Icon name={'envira'} size={80} color={'rgba(0, 0, 0, 0.6)'}/>
+        <Image source={pice1}  style={styles.logo}/>
+        {/* <Icon name={'envira'} size={80} color={'rgba(0, 0, 0, 0.6)'}/> */}
         {/* <Text style={styles.logoText}>Login Here</Text> */}
       </View>
-      <KeyboardAvoidingView enabled>
+      
+    {/* <ScrollView>
+      <View> */}
+     
         <View style={styles.InputContainer}>
           <Icon name={'user'} size={28} color={'rgba(255,255,255,0.7)'}
             style={styles.inputIcon}/>
@@ -85,7 +93,7 @@ render() {
           />
         </View>
         <View style={styles.InputContainer}>
-          <Icon name={'user'} size={28} color={'rgba(255,255,255,0.7)'}
+          <Icon name={'envelope-o'} size={28} color={'rgba(255,255,255,0.7)'}
             style={styles.inputIcon}/>
           <TextInput
           style={styles.input}
@@ -114,13 +122,17 @@ render() {
         <Icon name={this.state.press ==false ?'eye-slash':'eye'} size={26} color={'rgba(255,255,255,0.7)'}/>
       </TouchableOpacity>
       </View>
-      </KeyboardAvoidingView>
+     
+
       <TouchableOpacity style={styles.btnRegister}>
         <Text style={styles.text} onPress={this.Register}> Register</Text>
       </TouchableOpacity>
 
+      {/* </View>
+      </ScrollView> */}
     </ImageBackground>
-</Container>
+ {/* </KeyboardAvoidingView> */}
+ </Container>
     );
   }
 }
@@ -151,10 +163,11 @@ const styles = StyleSheet.create({
   logoContainer:{
     alignItems:'center',
     marginBottom:50,
+    marginTop:50
   },
   logo:{
-    width:120,
-    height:120,
+    width:165,
+    height:150,
   },
   logoText:{
     color:'#fff',
@@ -205,7 +218,8 @@ const styles = StyleSheet.create({
     borderRadius:25,
     backgroundColor:'#193B4D',
     justifyContent:'center',
-    marginTop:20
+    marginTop:20,
+    marginLeft:30,
   },
 })
 

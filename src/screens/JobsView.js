@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,  View, Image,AsyncStorage,
+import { StyleSheet,  View, Image,
          Dimensions,KeyboardAvoidingView,
          ImageBackground,TextInput ,TouchableOpacity} from 'react-native';
 import {  Container, Content, Header,Left,Title,Button,Footer,
@@ -13,7 +13,7 @@ import {signInUR} from '../store/actions/authActionUR'
 
 const { width:WIDTH } = Dimensions.get('window')
 
-class Login extends React.Component {
+class JobsView extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -25,7 +25,6 @@ class Login extends React.Component {
       press: false,
     }
   }
-
 showPassword=()=>{
   if(this.state.press==false){
     this.setState({
@@ -46,7 +45,6 @@ hundleChange=(e)=>{
       [e.target.id]:e.target.value
   })
 }
-
   LoginSub=()=>{
     if(!this.state.email){
       // alert(" Insert Email ");
@@ -56,98 +54,31 @@ hundleChange=(e)=>{
     console.log(" Insert Password ");
   }
   else if(this.state.email || this.state.password){
-    const { email} = this.state;
-    let userINFO={
-      Email:email
-    }
-    AsyncStorage.setItem('userINFO',
-    JSON.stringify(userINFO))
     this.props.signInUR(this.state);
   }
   // console.log("User Login",e)
   // this.props.signInUR(this.state);
     // this.props.navigation.navigate('Register')
   }
-  async componentWillMount(){
-    //  componentWillMount(){
-      let userINFO = await AsyncStorage.getItem('userINFO');
-      let U = JSON.parse(userINFO);
-      this.setState({
-          email:U.Email,
-      })
-      const {email} = this.state;
-      console.log("email===========",email)
-      if(email){
-        this.props.navigation.navigate("Drawer")
-        // this.props.navigation.immediatelyResetRouteStack("Drawer");
-      }
-    }
-    
 
   btnRegister=()=>{
     this.props.navigation.navigate('Register')
   }
 
 render() {
-  if(this.props.statusUR ) return this.props.navigation.navigate("Drawer")
   return (
     <Container style={{marginTop: Constants.statusBarHeight}}>
       <ImageBackground source={pice} style={styles.bgImageContainer}>
-        <View style={styles.logoContainer}>
-          {/* <Image src={} style={styles.logo}/> */}
-          <Icon name={'envira'} size={80} color={'rgba(0, 0, 0, 0.6)'}/>
-          {/* <Text style={styles.logoText}>Login Here</Text> */}
-        </View>
-        <KeyboardAvoidingView enabled>
-          <View style={styles.InputContainer}>
-            <Icon name={'user'} size={28} color={'rgba(255,255,255,0.7)'}
-              style={styles.inputIcon}/>
-            <TextInput
-            style={styles.input}
-            placeholder={'Email'}
-            placeholderTextColor={'#ffff'}
-            underlineColorAndroid='transparent'
-            // id="email" onChange={this.hundleChange}
-            onChangeText={(email) => this.setState({ email })}
-            />
-          </View>
-          <View style={styles.InputContainer}>
-          <Icon name={'lock'} size={28} color={'rgba(255,255,255,0.7)'}
-          style={styles.inputIcon}/>
-          <TextInput
-          style={styles.input}
-          placeholder={'Password'}
-          secureTextEntry={this.state.showPass}
-          placeholderTextColor={'#ffff'}
-          underlineColorAndroid='transparent'
-          // id="password" onChange={this.hundleChange} 
-          onChangeText={(password) => this.setState({ password })}
-          />
-        <TouchableOpacity style={styles.btnEye}
-          onPress={this.showPassword.bind(this)}
-        >
-          <Icon name={this.state.press ==false ?'eye-slash':'eye'} size={26} color={'rgba(255,255,255,0.7)'}/>
-        </TouchableOpacity>
-        </View>
-        </KeyboardAvoidingView>
-        <TouchableOpacity style={styles.btnLogin}>
-          <Text style={styles.text} onPress={this.LoginSub}> Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnRegister}>
-          <Text style={styles.text} onPress={this.btnRegister}> Register</Text>
-        </TouchableOpacity>
+
 
       </ImageBackground>
-  </Container>
+    </Container>
     );
   }
 }
 const mapStateToProps = (state) => {
-  console.log("User Login______________________>>>>>",state.authUR.status)
-  const status2 =state.authUR.status;
+  // console.log("User Login______________________>>>>>",state)
   return{
-      auth:   state.firebase.auth.uid,
-      statusUR:status2,
   }
 }
 const mapDispatchToProps=(dispatch)=>{
@@ -157,7 +88,7 @@ const mapDispatchToProps=(dispatch)=>{
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(mapStateToProps,mapDispatchToProps)(JobsView);
 
 const styles = StyleSheet.create({
     bgImageContainer:{

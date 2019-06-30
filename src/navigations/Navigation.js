@@ -1,7 +1,7 @@
 import { createStackNavigator, createAppContainer,DrawerNavigator } from "react-navigation";
 import Login from '../screens/Login'
 import Register from '../screens/Register'
-import Dashboard from '../screens/Dashboard'
+import Drawer from '../navigations/Drawer'
 
 const StackNavigator = createStackNavigator({
         Login: {
@@ -10,12 +10,12 @@ const StackNavigator = createStackNavigator({
         Register: {
           screen: Register
         },
-        Dashboard: {
-          screen: Dashboard
+        Drawer: {
+          screen: Drawer
         },
 },
     {
-    initialRouteName: "Dashboard",
+    // initialRouteName: "Login",
     headerMode: 'none',
     navigationOptions: {
       headerVisible: false,
