@@ -15,4 +15,4 @@
 ### Dashoboard Drawer  
 ![alt text][logo]
 
-[logo]:https://github.com/HMUsama/RN_CampusApp/blob/master/assets/Drawer.PNG " SignUp"
+[logo]:https://github.com/HMUsama/RN_CampusApp/blob/master/assets/Drawer.PNG "Drawer"
