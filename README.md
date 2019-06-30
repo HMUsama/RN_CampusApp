@@ -4,19 +4,15 @@
 ### Login Page  
 ![alt text][logo]
 
-[logo]: https://github.com/HMUsama/RN_CampusApp/blob/master/assets/Login.PNG "Logo Title Text 2"
+[logo]: https://github.com/HMUsama/RN_CampusApp/blob/master/assets/Login1.PNG "Logo Title Text 2"
 
 ### SignUp Page  
 ![alt text][logo]
 
-[logo]: assets\Login1.PNG "Login"
+[logo]:https://github.com/HMUsama/RN_CampusApp/blob/master/assets/signup.PNG "Login"
 
-### SignUp Page  
-![alt text][logo]
-
-[logo]: F:\Native\CampusApp\assets\signup.PNG " SignUp"
 
 ### Dashoboard Drawer  
 ![alt text][logo]
 
-[logo]: F:\Native\CampusApp\assets\Drawer.PNG " SignUp"
+[logo]:https://github.com/HMUsama/RN_CampusApp/blob/master/assets/Drawer.PNG " SignUp"
