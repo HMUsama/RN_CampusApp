@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet,  View, Image,
-         Dimensions,KeyboardAvoidingView,
+         Dimensions,KeyboardAvoidingView,ScrollView,
          ImageBackground,TextInput ,TouchableOpacity} from 'react-native';
 import {  Container, Content, Header,Left,Title,Button,Footer,
-     ListItem,Body, InputGroup, Input, Text, Picker} from 'native-base'
+     ListItem,Body, InputGroup, Input, Text, Picker, Card, CardItem,} from 'native-base'
 import { Constants,LinearGradient  } from 'expo';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import pice from '../../assets/background.jpg'
+// import pice from '../../assets/background.jpg'
 import {connect} from 'react-redux'
 import {signInUR} from '../store/actions/authActionUR'
 
@@ -17,61 +17,32 @@ class JobsView extends React.Component {
   constructor(){
     super()
     this.state = {
-      email:'',
-      password:'',
-      status:false,
-      auth:false,
-      showPass : true,
-      press: false,
+
     }
-  }
-showPassword=()=>{
-  if(this.state.press==false){
-    this.setState({
-      showPass:false,
-      press:true
-    })
-  }else{
-    this.setState({
-      showPass:true,
-      press:false
-    })
-  }
-}
-
-hundleChange=(e)=>{
-  console.log("====================================",e.target.value)
-  this.setState({
-      [e.target.id]:e.target.value
-  })
-}
-  LoginSub=()=>{
-    if(!this.state.email){
-      // alert(" Insert Email ");
-      console.log(" Insert Email ");
-  }else if(!this.state.password) {
-    // alert(" Insert Password ");
-    console.log(" Insert Password ");
-  }
-  else if(this.state.email || this.state.password){
-    this.props.signInUR(this.state);
-  }
-  // console.log("User Login",e)
-  // this.props.signInUR(this.state);
-    // this.props.navigation.navigate('Register')
-  }
-
-  btnRegister=()=>{
-    this.props.navigation.navigate('Register')
   }
 
 render() {
   return (
     <Container style={{marginTop: Constants.statusBarHeight}}>
-      <ImageBackground source={pice} style={styles.bgImageContainer}>
-
-
-      </ImageBackground>
+       <Content>
+          <Card style={{flex:1,height:'100%',backgroundColor:'#000'}}>
+              <CardItem>                        
+                  <Text>
+                      Your text here
+                  </Text>
+              </CardItem>
+          </Card>
+        </Content>
+      {/* <ScrollView style={{flex:1,}}>
+      <View >
+          <View style={{flex:50,backgroundColor:'#000'}}>
+          </View>
+          <View style={{flex:25,backgroundColor:'#f1f'}}>
+          </View>
+          <View style={{flex:50,backgroundColor:'#fa1'}}>
+          </View>
+      </View>
+      </ScrollView> */}
     </Container>
     );
   }
@@ -83,8 +54,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps=(dispatch)=>{
   return{
-      signInUR: (creds) =>dispatch(signInUR(creds)),
-      adminLognin: (creds) =>dispatch(adminLognin(creds))
+    
   }
 }
 
@@ -97,65 +67,6 @@ const styles = StyleSheet.create({
         height:null,
         justifyContent:'center',
         alignItems:'center'
-    },
-    logoContainer:{
-      alignItems:'center',
-      marginBottom:50,
-    },
-    logo:{
-      width:120,
-      height:120,
-    },
-    logoText:{
-      color:'#fff',
-      fontSize:20,
-      fontWeight:'500',
-      marginTop:10,
-      opacity:0.5,
-    },
-    InputContainer:{
-     marginTop:10
-    },
-    input:{
-      width:WIDTH - 55,
-      height:45,
-      borderRadius:25,
-      fontSize:16,
-      paddingLeft:45,
-      backgroundColor:'rgba(0,0,0,0.35)',
-      color:'#fff',
-      marginHorizontal:25, 
-    },
-    inputIcon:{
-      position:'absolute',
-      top:8,
-      left:37,
-    },
-    btnEye:{
-      position:'absolute',
-      top:8,
-      right:37,
-    },
-    btnLogin:{
-      width:WIDTH -55,
-      height:45,
-      borderRadius:25,
-      backgroundColor:'#39436D',
-      justifyContent:'center',
-      marginTop:20
-    },
-    text:{
-      color:'#fff',
-      fontSize:16,
-      textAlign:'center',
-    },
-    btnRegister:{
-      width:WIDTH -55,
-      height:45,
-      borderRadius:25,
-      backgroundColor:'#193B4D',
-      justifyContent:'center',
-      marginTop:20
     },
 })
 

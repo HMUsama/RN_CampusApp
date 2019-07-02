@@ -107,6 +107,7 @@ render() {
             placeholder={'Email'}
             placeholderTextColor={'#ffff'}
             underlineColorAndroid='transparent'
+            keyboardType="email-address"
             // id="email" onChange={this.hundleChange}
             onChangeText={(email) => this.setState({ email })}
             />

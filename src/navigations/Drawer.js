@@ -31,9 +31,9 @@ const StackNavigator = createStackNavigator({
 })
 const DrawerNavigator = createDrawerNavigator(
     {   
-        // JobsView: {
-        // screen: JobsView
-        // },
+        JobsView: {
+        screen: JobsView
+        },
         CreateResume: {
         screen: CreateResume
         },

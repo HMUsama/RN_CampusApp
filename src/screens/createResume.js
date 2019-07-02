@@ -83,6 +83,9 @@ render() {
                     placeholderTextColor={'#ffff'}
                 />
                 </View>
+            <TouchableOpacity style={styles.btnSubmit}>
+                <Text style={styles.text} onPress={this.submit}> Upload</Text>
+            </TouchableOpacity>
             </Content>
         </ImageBackground>
     </Container>
@@ -125,6 +128,20 @@ const styles = StyleSheet.create({
         borderWidth:1,
         color:'#fff',
         marginHorizontal:25, 
+      },
+      btnSubmit:{
+        width:WIDTH -55,
+        height:45,
+        borderRadius:25,
+        backgroundColor:'#193B4D',
+        justifyContent:'center',
+        marginTop:20,
+        marginLeft:30,
+      },
+      text:{
+        color:'#fff',
+        fontSize:16,
+        textAlign:'center',
       },
 })
 
