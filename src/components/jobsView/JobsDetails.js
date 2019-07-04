@@ -63,10 +63,11 @@ render() {
        {  
          this.state.result.map((item)=>{
         return  <Card style={{backgroundColor:'#000',}}>
-                  <CardItem style={{backgroundColor:'#000',}}>
+                 
+                 <CardItem style={{backgroundColor:'#000',}}>
                   <Text style={{color:'#fff'}}>{item.companyName}</Text>
                   </CardItem>
-                  <CardItem>
+                 <CardItem>
                   <Text>{item.email}</Text>
                   </CardItem>
                   <CardItem>
@@ -81,21 +82,11 @@ render() {
                   <CardItem>
                   <Text>{item.number}</Text>
                   </CardItem>
-                
+                  
           </Card>
           })
         }
         </Content>
-      {/* <ScrollView style={{flex:1,}}>
-      <View >
-          <View style={{flex:50,backgroundColor:'#000'}}>
-          </View>
-          <View style={{flex:25,backgroundColor:'#f1f'}}>
-          </View>
-          <View style={{flex:50,backgroundColor:'#fa1'}}>
-          </View>
-      </View>
-      </ScrollView> */}
     </Container>
     );
   }

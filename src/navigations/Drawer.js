@@ -38,6 +38,9 @@ const DrawerNavigator = createDrawerNavigator(
         CreateResume: {
         screen: CreateResume
         },
+        JobsDetails: {
+            screen: JobsDetails
+          },
     },
     DrawerConfig
 )

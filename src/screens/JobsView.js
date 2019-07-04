@@ -33,6 +33,10 @@ class JobsView extends React.Component {
       console.error(err);
     }
   }
+  View=()=>{
+    console.log("*******************", this.props.navigation.navigate('JobsDetails'))
+    // this.props.navigation.navigate('JobsDetails')
+  }
 
 render() {
   const {result} = this.state
@@ -44,38 +48,25 @@ render() {
          this.state.result.map((item)=>{
         return  <Card style={{backgroundColor:'#000',}}>
                   <CardItem style={{backgroundColor:'#000',}}>
-                  {/* <Text style={{color:'#fff'}}>{item.companyName}</Text> */}
+                  <Text style={{color:'#fff'}}>{item.companyName}</Text>
                   </CardItem>
                   <CardItem>
                   <Text>{item.email}</Text>
                   </CardItem>
-                  <CardItem>
-                  <Text>{item.jobTitle}</Text>
-                  </CardItem>
-                  <CardItem>
-                  <Text>{item.location}</Text>
-                  </CardItem>
-                  <CardItem>
-                  <Text>{item.message}</Text>
-                  </CardItem>
-                  <CardItem>
-                  <Text>{item.number}</Text>
-                  </CardItem>
-                
+
+                  <CardItem    style={{color:'#fff', height: 50,}}>
+                 
+                 {/* <Button 
+                 onPress={this.View}
+                 title="View"
+                 style={{color:'#fff',backgroundColor:'#000' }}
+                 /> */}
+                 <Text onPress={this.View}>View One</Text>
+                 </CardItem>
           </Card>
           })
         }
         </Content>
-      {/* <ScrollView style={{flex:1,}}>
-      <View >
-          <View style={{flex:50,backgroundColor:'#000'}}>
-          </View>
-          <View style={{flex:25,backgroundColor:'#f1f'}}>
-          </View>
-          <View style={{flex:50,backgroundColor:'#fa1'}}>
-          </View>
-      </View>
-      </ScrollView> */}
     </Container>
     );
   }

@@ -54,7 +54,7 @@ logout=()=>{
             <Left>
               <Icon name="id-card-o" style={{marginTop:5,marginLeft:0,fontSize:30,color:'#565D5A' }}/>
               <TouchableOpacity onPress={this.create_Resume}>
-              <Text style={{marginTop:5,marginLeft:30,fontSize:15,color:'#ffff' }}>Create Resume</Text>
+              <Text style={{marginTop:5,marginLeft:30,fontSize:15,color:'#ffff' }}>Resume</Text>
               </TouchableOpacity>
             </Left>
           </ListItem>
