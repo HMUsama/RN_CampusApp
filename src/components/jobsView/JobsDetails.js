@@ -1,14 +1,34 @@
 import React from 'react';
-import { StyleSheet,  View, Image,
-         Dimensions,KeyboardAvoidingView,ScrollView,
-         ImageBackground,TextInput ,TouchableOpacity} from 'react-native';
-import {  Container, Content, Header,Left,Title,Button,Footer,
-     ListItem,Body, InputGroup, Input, Text, Picker, Card, CardItem,} from 'native-base'
+import { StyleSheet, 
+         View,
+         Image,
+         Dimensions,
+         KeyboardAvoidingView,
+         ScrollView,
+         ImageBackground,
+         TextInput ,
+         TouchableOpacity
+         } from 'react-native';
+import { Container,
+         Content,
+         Header,
+         Left,
+         Title,
+         Button,
+         Footer,
+         ListItem,
+         Body,
+         InputGroup,
+         Input,
+         Text,
+         Picker,
+         Card,
+         CardItem,
+        } from 'native-base'
 import { Constants,LinearGradient  } from 'expo';
 import Icon from 'react-native-vector-icons/FontAwesome'
-// import pice from '../../assets/background.jpg'
 import {connect} from 'react-redux'
-import {signInUR} from '../store/actions/authActionUR'
+// import {signInUR} from '../store/actions/authActionUR'
 
 import * as firebase from 'firebase';
 import 'firebase/firestore';
@@ -16,7 +36,7 @@ import 'firebase/firestore';
 
 const { width:WIDTH } = Dimensions.get('window')
 
-class JobsView extends React.Component {
+class JobsDetails extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -44,7 +64,7 @@ render() {
          this.state.result.map((item)=>{
         return  <Card style={{backgroundColor:'#000',}}>
                   <CardItem style={{backgroundColor:'#000',}}>
-                  {/* <Text style={{color:'#fff'}}>{item.companyName}</Text> */}
+                  <Text style={{color:'#fff'}}>{item.companyName}</Text>
                   </CardItem>
                   <CardItem>
                   <Text>{item.email}</Text>
@@ -91,7 +111,7 @@ const mapDispatchToProps=(dispatch)=>{
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(JobsView);
+export default connect(mapStateToProps,mapDispatchToProps)(JobsDetails);
 
 const styles = StyleSheet.create({
     bgImageContainer:{
