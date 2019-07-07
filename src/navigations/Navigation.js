@@ -4,12 +4,12 @@ import Register from '../screens/Register'
 import Drawer from '../navigations/Drawer'
 
 const StackNavigator = createStackNavigator({
-        Login: {
-          screen: Login
-        },
-        Register: {
-          screen: Register
-        },
+        // Login: {
+        //   screen: Login
+        // },
+        // Register: {
+        //   screen: Register
+        // },
         Drawer: {
           screen: Drawer
         },
